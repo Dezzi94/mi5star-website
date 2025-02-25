@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #000000;
+  --secondary: #d3ab53;
+  --accent: #d3ab53;
+  --text-primary: #FFFFFF;
+  --text-secondary: #CCCCCC;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply bg-black text-white;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-primary {
+    @apply bg-[var(--secondary)] text-white px-6 py-3 rounded-md hover:bg-[var(--accent)] transition-colors duration-300;
+  }
+  
+  .btn-secondary {
+    @apply border-2 border-[var(--secondary)] text-[var(--secondary)] px-6 py-3 rounded-md hover:bg-[var(--secondary)] hover:text-white transition-colors duration-300;
+  }
+  
+  .heading-xl {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+  
+  .heading-lg {
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold;
+  }
+  
+  .heading-md {
+    @apply text-2xl md:text-3xl lg:text-4xl font-bold;
+  }
+  
+  .heading-sm {
+    @apply text-xl md:text-2xl lg:text-3xl font-bold;
+  }
+
+  /* Hide scrollbar but maintain functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--secondary)] to-[var(--accent)];
+  }
+}
