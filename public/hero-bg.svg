@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Dark gradient background -->
+  <rect width="1920" height="1080" fill="url(#gradient)"/>
+  
+  <!-- Abstract security-themed pattern -->
+  <path d="M0 0L1920 1080M0 360L1920 360M0 720L1920 720M0 1080L1920 0" stroke="#d3ab53" stroke-width="0.5" stroke-opacity="0.1"/>
+  
+  <!-- Define gradient -->
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1920" y2="1080" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#000000"/>
+      <stop offset="50%" stop-color="#1A1A1A"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </linearGradient>
+  </defs>
+</svg> 
