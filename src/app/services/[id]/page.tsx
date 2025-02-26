@@ -23,9 +23,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export const dynamic = 'force-static';
+// Force static generation
+export const dynamic = 'error';
 export const dynamicParams = false;
 
+// Pre-generate all possible service pages at build time
 export async function generateStaticParams() {
   const ids = getAllServiceIds();
   return ids.map((id) => ({
@@ -40,5 +42,9 @@ export default function ServicePage({ params }: Props) {
     notFound();
   }
 
-  return <ServicePageContent service={service} id={params.id} />;
+  return (
+    <div className="min-h-screen bg-black">
+      <ServicePageContent service={service} id={params.id} />
+    </div>
+  );
 } 

@@ -24,8 +24,9 @@ export interface Service {
   process: ProcessStep[];
 }
 
-export const services: Service[] = [
-  {
+// Static services data
+const SERVICES: Record<string, Service> = {
+  'asset-protection': {
     id: 'asset-protection',
     title: 'Asset Protection',
     description: 'Elite security solutions for high-value assets, from art collections to luxury properties.',
@@ -81,7 +82,7 @@ export const services: Service[] = [
       }
     ]
   },
-  {
+  'high-value-asset': {
     id: 'high-value-asset',
     title: 'High-Value Asset Protection',
     description: 'Comprehensive security solutions for valuable assets, from art collections to luxury properties.',
@@ -137,7 +138,7 @@ export const services: Service[] = [
       }
     ]
   },
-  {
+  'executive-protection': {
     id: 'executive-protection',
     title: 'Executive Protection',
     description: 'Elite close protection services for VIPs, executives, and high-profile individuals, ensuring their safety and privacy worldwide.',
@@ -193,7 +194,7 @@ export const services: Service[] = [
       }
     ]
   },
-  {
+  'corporate-risk-management': {
     id: 'corporate-risk-management',
     title: 'Corporate Risk Management',
     description: 'Comprehensive security solutions for businesses, including risk assessment, crisis management, and strategic security planning.',
@@ -249,7 +250,7 @@ export const services: Service[] = [
       }
     ]
   },
-  {
+  'luxury-travel': {
     id: 'luxury-travel',
     title: 'Luxury Travel Security',
     description: 'Premium security services for luxury travel and lifestyle experiences.',
@@ -305,7 +306,7 @@ export const services: Service[] = [
       }
     ]
   },
-  {
+  'event-security': {
     id: 'event-security',
     title: 'Event Security',
     description: 'Comprehensive security solutions for high-profile events, ensuring seamless protection for attendees, assets, and venues.',
@@ -361,7 +362,7 @@ export const services: Service[] = [
       }
     ]
   },
-  {
+  'cybersecurity': {
     id: 'cybersecurity',
     title: 'Cybersecurity',
     description: 'Advanced digital protection solutions to safeguard your sensitive data, systems, and online presence from cyber threats.',
@@ -417,16 +418,16 @@ export const services: Service[] = [
       }
     ]
   }
-];
+};
 
 export function getAllServiceIds(): string[] {
-  return services.map(service => service.id);
+  return Object.keys(SERVICES);
 }
 
 export function getServiceById(id: string): Service | undefined {
-  return services.find(service => service.id === id);
+  return SERVICES[id];
 }
 
 export function getAllServices(): Service[] {
-  return services;
+  return Object.values(SERVICES);
 } 

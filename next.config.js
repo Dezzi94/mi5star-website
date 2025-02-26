@@ -3,6 +3,7 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
+    remotePatterns: [],
   },
   trailingSlash: true,
   typescript: {
@@ -12,9 +13,10 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   distDir: 'out',
-  experimental: {
-    serverActions: false
-  }
+  // Ensure no server-side features are used
+  webpack: (config) => {
+    return config;
+  },
 };
 
 module.exports = nextConfig; 

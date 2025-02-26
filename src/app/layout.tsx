@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
-import { motion } from 'framer-motion';
-import PremiumGlowEffect from '@/components/PremiumGlowEffect';
+import dynamic from 'next/dynamic';
+
+const Navigation = dynamic(() => import("@/components/Navigation"), { ssr: false });
+const Footer = dynamic(() => import("@/components/Footer"), { ssr: false });
+const PremiumGlowEffect = dynamic(() => import('@/components/PremiumGlowEffect'), { ssr: false });
 
 const inter = Inter({ subsets: ["latin"] });
 
