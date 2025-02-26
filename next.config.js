@@ -3,6 +3,7 @@ const nextConfig = {
   output: 'export',
   images: {
     unoptimized: true,
+    remotePatterns: [],
   },
   trailingSlash: true,
   typescript: {
@@ -12,6 +13,9 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   distDir: 'out',
+  experimental: {
+    appDir: true
+  }
 };
 
 module.exports = nextConfig; 
