@@ -1,9 +1,13 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const CursorEffect = () => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicking, setIsClicking] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(1000); // Default value
+  
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   const scale = useMotionValue(1);
@@ -15,11 +19,19 @@ const CursorEffect = () => {
   
   const rotation = useTransform(
     cursorXSpring,
-    [-100, window.innerWidth + 100],
+    [-100, windowWidth + 100],
     [-30, 30]
   );
 
   useEffect(() => {
+    // Set initial window width
+    setWindowWidth(window.innerWidth);
+
+    // Handle window resize
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
     const moveCursor = (e: MouseEvent) => {
       cursorX.set(e.clientX);
       cursorY.set(e.clientY);
@@ -48,12 +60,14 @@ const CursorEffect = () => {
       scale.set(isHovered ? 1.5 : 1);
     };
 
+    window.addEventListener('resize', handleResize);
     window.addEventListener('mousemove', moveCursor);
     window.addEventListener('mouseover', handleMouseOver);
     window.addEventListener('mousedown', handleMouseDown);
     window.addEventListener('mouseup', handleMouseUp);
 
     return () => {
+      window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', moveCursor);
       window.removeEventListener('mouseover', handleMouseOver);
       window.removeEventListener('mousedown', handleMouseDown);

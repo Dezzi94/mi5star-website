@@ -121,19 +121,18 @@ export default function Home() {
 
         {/* Subtle animated particles */}
         {[...Array(8)].map((_, i) => {
-          const startY = Math.random() * window.innerHeight;
           return (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-[var(--secondary)]"
               initial={{
                 opacity: 0,
-                x: Math.random() * window.innerWidth,
-                y: startY,
+                x: `${Math.random() * 100}%`,
+                y: `${Math.random() * 100}%`,
               }}
               animate={{
                 opacity: [0, 0.2, 0],
-                y: startY - 50,
+                y: [`${Math.random() * 100}%`, `${Math.random() * 100 - 50}%`],
               }}
               transition={{
                 duration: Math.random() * 3 + 2,

@@ -1,10 +1,14 @@
-import { useEffect, useRef } from 'react';
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useTransform, useMotionValue, useVelocity } from 'framer-motion';
 
 const ScrollEffects = () => {
   const { scrollY, scrollYProgress } = useScroll();
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollVelocity = useVelocity(scrollYProgress);
+  const [mousePosition, setMousePosition] = useState({ x: '50%', y: '50%' });
+  
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: 50,
     stiffness: 400
@@ -21,10 +25,9 @@ const ScrollEffects = () => {
 
   useEffect(() => {
     const updateMousePosition = (e: MouseEvent) => {
-      const mouseX = e.clientX / window.innerWidth;
-      const mouseY = e.clientY / window.innerHeight;
-      document.documentElement.style.setProperty('--mouse-x', `${mouseX * 100}%`);
-      document.documentElement.style.setProperty('--mouse-y', `${mouseY * 100}%`);
+      const mouseX = (e.clientX / window.innerWidth) * 100;
+      const mouseY = (e.clientY / window.innerHeight) * 100;
+      setMousePosition({ x: `${mouseX}%`, y: `${mouseY}%` });
     };
 
     window.addEventListener('mousemove', updateMousePosition);

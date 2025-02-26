@@ -11,14 +11,15 @@ interface ServicesLayoutProps {
 export default function ServicesLayout({ children }: ServicesLayoutProps) {
   const pathname = usePathname();
   const isMainServicesPage = pathname === '/services';
+  const isServicePage = pathname.startsWith('/services/') && pathname !== '/services';
 
   return (
     <div className="min-h-screen">
       {/* Main Content */}
       {children}
 
-      {/* Sidebar (only shown on individual service pages) */}
-      {!isMainServicesPage && (
+      {/* Right Sidebar (only shown on individual service pages) */}
+      {isServicePage && (
         <>
           {/* Desktop Sidebar */}
           <div className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
