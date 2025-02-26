@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "clean": "if exist out rd /s /q out && if exist .next rd /s /q .next",
+    "clean": "rimraf .next out",
     "build": "npm run clean && next build",
     "start": "next start",
     "lint": "next lint"
@@ -30,7 +30,7 @@
     "eslint": "^8.0.0",
     "eslint-config-next": "^14.1.0",
     "postcss": "^8",
-    "rimraf": "^5.0.10",
+    "rimraf": "^5.0.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
