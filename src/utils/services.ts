@@ -419,12 +419,12 @@ export const services: Service[] = [
   }
 ];
 
-export function getServiceById(id: string): Service | undefined {
-  return services.find(service => service.id === id);
-}
-
 export function getAllServiceIds(): string[] {
   return services.map(service => service.id);
+}
+
+export function getServiceById(id: string): Service | undefined {
+  return services.find(service => service.id === id);
 }
 
 export function getAllServices(): Service[] {

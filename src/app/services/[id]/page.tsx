@@ -1,4 +1,4 @@
-import { getServiceById } from '@/utils/services';
+import { getServiceById, getAllServiceIds } from '@/utils/services';
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import ServicePageContent from '@/components/ServicePageContent';
@@ -30,16 +30,10 @@ export const dynamicParams = false;
 
 // Generate static params for all valid service IDs
 export async function generateStaticParams() {
-  return [
-    { id: 'asset-protection' },
-    { id: 'high-value-asset' },
-    { id: 'executive-protection' },
-    { id: 'corporate-risk-management' },
-    { id: 'luxury-travel' },
-    { id: 'cybersecurity' },
-    { id: 'event-security' },
-    { id: 'luxury-lifestyle' }
-  ];
+  const serviceIds = getAllServiceIds();
+  return serviceIds.map((id) => ({
+    id: id,
+  }));
 }
 
 export default function ServicePage({ params }: Props) {
