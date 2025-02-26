@@ -5,7 +5,6 @@ import ServicePageContent from '@/components/ServicePageContent';
 
 type Props = {
   params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -24,14 +23,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-// Force static generation for all service pages
 export const dynamic = 'force-static';
 export const dynamicParams = false;
 
-// Generate static params for all valid service IDs
 export async function generateStaticParams() {
-  const serviceIds = getAllServiceIds();
-  return serviceIds.map((id) => ({
+  const ids = getAllServiceIds();
+  return ids.map((id) => ({
     id: id,
   }));
 }

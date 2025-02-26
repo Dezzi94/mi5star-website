@@ -11,54 +11,198 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden bg-black/90">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-black">
+        {/* Premium Background Effects */}
         <motion.div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(211, 171, 83, 0.1) 0%, transparent 50%)',
-          }}
+          className="absolute inset-0"
           initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
-          transition={{ duration: 1 }}
+          animate={{ 
+            opacity: [0.1, 0.15, 0.1],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            backgroundImage: 'radial-gradient(circle at 50% 50%, rgba(211, 171, 83, 0.15) 0%, transparent 70%)',
+          }}
         />
-        {/* Premium grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-5"
+
+        {/* Enhanced Grid Pattern */}
+        <motion.div 
+          className="absolute inset-0"
           style={{
             backgroundImage: 'linear-gradient(var(--secondary) 1px, transparent 1px), linear-gradient(90deg, var(--secondary) 1px, transparent 1px)',
             backgroundSize: '50px 50px',
           }}
+          animate={{
+            opacity: [0.03, 0.05, 0.03],
+          }}
+          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
         />
-        <div className="container relative z-10 mx-auto px-4">
+
+        {/* Luxury Light Rays */}
+        {[...Array(5)].map((_, i) => (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
+            key={`ray-${i}`}
+            className="absolute inset-0 overflow-hidden"
+            style={{
+              transform: `rotate(${i * 72}deg)`,
+              opacity: 0.03,
+            }}
           >
-            <div className="inline-block mb-6">
-              <span className="px-4 py-2 rounded-full text-sm font-medium bg-[var(--secondary)]/10 text-[var(--secondary)] border border-[var(--secondary)]/20">
-                About Mi5Star
-              </span>
-            </div>
-            <AnimatedText
-              animate="letters"
-              className="text-4xl md:text-5xl lg:text-7xl text-center font-bold mb-8"
-            >
-              <span className="text-white">Global Leaders in </span>
-              <span className="bg-gradient-gold bg-clip-text text-transparent">Elite Security</span>
-            </AnimatedText>
-            <motion.p
-              className="text-lg md:text-xl text-white/70 text-center max-w-3xl mx-auto leading-relaxed"
+            <motion.div
+              className="w-full h-[1px] bg-gradient-to-r from-transparent via-[var(--secondary)] to-transparent"
+              animate={{
+                translateX: ['-100%', '100%'],
+              }}
+              transition={{
+                duration: 7 + i,
+                repeat: Infinity,
+                ease: "linear",
+                delay: i * 0.5,
+              }}
+            />
+          </motion.div>
+        ))}
+
+        <div className="container relative z-10 px-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="text-center max-w-6xl mx-auto"
+          >
+            {/* Premium Label */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
+              transition={{ duration: 0.8 }}
+              className="flex justify-center mb-12"
             >
-              Since our inception, Mi5Star has set the gold standard in premium security solutions,
-              serving elite clientele across the globe with unparalleled expertise and discretion.
+              <PremiumGlowEffect intensity="high" hover={true}>
+                <motion.span 
+                  className="inline-block px-8 py-3 rounded-full text-sm font-medium bg-[var(--secondary)]/10 text-[var(--secondary)] border border-[var(--secondary)]/20 backdrop-blur-md"
+                  whileHover={{
+                    boxShadow: [
+                      "0 0 20px rgba(211,171,83,0.3)",
+                      "0 0 30px rgba(211,171,83,0.2)",
+                      "0 0 20px rgba(211,171,83,0.3)"
+                    ],
+                    transition: {
+                      duration: 2,
+                      repeat: Infinity
+                    }
+                  }}
+                >
+                  <span className="mr-2">✦</span>
+                  Global Excellence in Security
+                  <span className="ml-2">✦</span>
+                </motion.span>
+              </PremiumGlowEffect>
+            </motion.div>
+
+            {/* Enhanced Title */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="mb-12"
+            >
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-none tracking-tight">
+                <motion.span 
+                  className="block text-white opacity-90 mb-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  Global Leaders in
+                </motion.span>
+                <motion.div
+                  className="relative inline-block"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                >
+                  <AnimatedText 
+                    animate="letters"
+                    className="relative z-10 inline-block bg-clip-text text-transparent bg-gradient-to-r from-[#d3ab53] via-[#f0c675] to-[#d3ab53] drop-shadow-[0_5px_15px_rgba(211,171,83,0.3)]"
+                  >
+                    Elite Security
+                  </AnimatedText>
+                </motion.div>
+              </h1>
+            </motion.div>
+
+            {/* Enhanced Description */}
+            <motion.p
+              className="text-xl md:text-2xl text-white/80 max-w-4xl mx-auto leading-relaxed font-light"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.5 }}
+            >
+              Since our inception, Mi5Star has set the <span className="text-[var(--secondary)]">gold standard</span> in premium security solutions, serving elite clientele across the globe with unparalleled expertise and discretion.
             </motion.p>
+
+            {/* Stats Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.7 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 max-w-4xl mx-auto"
+            >
+              {[
+                { number: "20+", label: "Years of Excellence" },
+                { number: "100+", label: "Elite Clients Worldwide" },
+                { number: "24/7", label: "Global Operations" }
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="text-center p-6"
+                  whileHover={{ y: -5 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <PremiumGlowEffect intensity="low" hover={true}>
+                    <motion.div
+                      className="p-6 rounded-lg bg-black/40 backdrop-blur-sm border border-[var(--secondary)]/10"
+                      whileHover={{
+                        borderColor: "rgba(211,171,83,0.3)",
+                      }}
+                    >
+                      <h3 className="text-4xl font-bold text-[var(--secondary)] mb-2">{stat.number}</h3>
+                      <p className="text-white/70">{stat.label}</p>
+                    </motion.div>
+                  </PremiumGlowEffect>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
+
+        {/* Enhanced Floating Particles */}
+        {[...Array(15)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{
+              opacity: [0, 1, 0],
+              scale: [0.5, 1.5, 0.5],
+              x: [0, (Math.random() - 0.5) * 400],
+              y: [0, (Math.random() - 0.5) * 400],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              delay: i * 0.3,
+              ease: "easeInOut",
+            }}
+            style={{
+              left: `${50 + (Math.random() - 0.5) * 50}%`,
+              top: `${50 + (Math.random() - 0.5) * 50}%`,
+            }}
+          >
+            <div className="w-2 h-2 rounded-full bg-[var(--secondary)] blur-[2px] opacity-40" />
+          </motion.div>
+        ))}
       </section>
 
       {/* Overview Section */}
