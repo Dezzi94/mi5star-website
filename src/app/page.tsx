@@ -199,9 +199,21 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
+              className="relative"
             >
-              <AnimatedText animate="words" className="heading-lg text-center mb-12">
-                Premium Security Solutions
+              <motion.div
+                className="absolute inset-0 blur-3xl opacity-20"
+                style={{
+                  background: 'radial-gradient(circle at center, var(--secondary), transparent 70%)',
+                }}
+              />
+              <AnimatedText 
+                animate="words" 
+                className="heading-xl text-center mb-12 px-4 sm:px-6 relative z-10"
+              >
+                <span className="bg-gradient-to-r from-[#d3ab53] via-[#f0c675] to-[#d3ab53] bg-clip-text text-transparent drop-shadow-[0_5px_35px_rgba(211,171,83,0.15)]">
+                  Premium Security Solutions
+                </span>
               </AnimatedText>
             </motion.div>
             
